@@ -1,0 +1,94 @@
+</doctype html>
+
+<head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+
+<form name="sign-up-form" method="post" action="#" id="sign-up-form">
+   
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" autocomplete = "off" required ><br>
+
+      <span id="displayEmailErrorMsg"></span>
+
+       <label for="password">Password</label>
+      <input type="password" name="password" id="password"  autocomplete="off" required><br>
+
+      <span id="displayPwdErrorMsg"></span>
+      
+      <br>
+      <input type="submit" value="Login">
+      
+    </form>  
+
+<p id="showContent">
+
+
+<script>
+
+
+// localstorage feature on form submit
+window.onload = function() {
+
+var showContent = document.getElementById('showContent');
+  // Check for LocalStorage support.
+ if (typeof(Storage) !== "undefined") {
+
+    // Add an event listener for form submissions
+    document.getElementById('sign-up-form').addEventListener('submit', function(event) {
+
+    	 event.preventDefault();
+      // Get the value of the form field.
+      // var name = document.getElementById('username').value;
+    
+      // var confpwd = document.getElementById('confirm-password').value;
+      // var selectGender = document.getElementById('gender').value;
+       var userEmail = document.getElementById('email').value;
+      // var pwd = document.getElementById('password').value;
+
+      // localStorage.setItem('email', email);
+      // localStorage.setItem('password', pwd);
+
+      // get the the name in localStorage.
+      var emailGetStorage =  localStorage.getItem('email', email);
+      //var pwdGetStorage = localStorage.getItem('password', pwd);
+
+    
+      if(userEmail !== emailGetStorage)
+      //if(emailGetStorage == null || emailGetStorage == undefined)
+
+      {
+        showContent.innerHTML = "Sorry, this email address: " + userEmail  + "  is not registered with us. ";
+      }else{
+        showContent.innerHTML = "Hello this email id  " + emailGetStorage  + "  exists. Continue browsing our application";
+      }
+    
+      
+    });
+
+  }else {
+    alert("Sorry, your browser does not support Web Storage...");
+}
+  
+
+}
+</script>
+
+</body>
+
+
+
+
+</html>
